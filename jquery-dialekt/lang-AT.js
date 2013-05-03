@@ -1,0 +1,3 @@
+window.woerterbuch = {
+    'ß': 'ss'
+};
