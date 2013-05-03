@@ -1,4 +1,4 @@
-;(function ( $, window, document, undefined ) {
+;(function ($, window, document, undefined) {
 
     // Create the defaults once
     var pluginName = "dialekt",
@@ -7,10 +7,10 @@
         };
 
     // The actual plugin constructor
-    function Plugin( element, options ) {
+    function Plugin(element, options) {
         this.element = element;
 
-        this.options = $.extend( {}, defaults, options );
+        this.options = $.extend({}, defaults, options);
 
         this._defaults = defaults;
         this._name = pluginName;
@@ -21,8 +21,8 @@
 
     Plugin.prototype = {
 
-        init: function() {
-            if(this._patterns.length == 0) {
+        init: function () {
+            if (this._patterns.length === 0) {
                 this.generatePatterns(this.element, this.options);
             } else {
                 this.parseDocument(this.element, this.options);
@@ -35,32 +35,33 @@
             // call them like so: this.yourOtherFunction(this.element, this.options).
         },
 
-        generatePatterns: function(el, options) {
+        generatePatterns: function (el, options) {
             var $this = this;
-            $.each(options['dictionary'], function(key, value){
-               $this._patterns.push([new RegExp(key, "g"), value]);
+            $.each(options.dictionary, function (key, value) {
+                $this._patterns.push([new RegExp(key, "g"), value]);
             });
             $this.parseDocument(el, options);
         },
 
         // parse the DOM node and replace all letters or words
-        parseDocument: function(el, options) {
-            var $this = this;
-            $.each($this._patterns, function(index, patterns){
-                $(el).html($(el).html().replace(patterns[0], patterns[1]));
+        parseDocument: function (el, options) {
+            var $this = this,
+                $el = $(el);
+            $.each($this._patterns, function (index, patterns) {
+                $el.html($el.html().replace(patterns[0], patterns[1]));
             });
-            $this.trigger('dialekt-fertig');
+            $el.trigger('dialekt-fertig');
         }
     };
 
     // A really lightweight plugin wrapper around the constructor,
     // preventing against multiple instantiations
-    $.fn[pluginName] = function ( options ) {
+    $.fn[pluginName] = function (options) {
         return this.each(function () {
             if (!$.data(this, "plugin_" + pluginName)) {
-                $.data(this, "plugin_" + pluginName, new Plugin( this, options ));
+                $.data(this, "plugin_" + pluginName, new Plugin(this, options));
             }
         });
     };
 
-})( jQuery, window, document );
+})(jQuery, window, document);
