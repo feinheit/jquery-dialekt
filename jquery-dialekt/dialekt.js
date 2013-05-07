@@ -3,7 +3,8 @@
     // Create the defaults once
     var pluginName = "dialekt",
         defaults = {
-            dictionary: window.woerterbuch
+            dictionary: window.woerterbuch,
+            elements: ['p', 'h1', 'h2', 'h3', 'label', 'td', 'a']
         };
 
     // The actual plugin constructor
@@ -27,12 +28,6 @@
             } else {
                 this.parseDocument(this.element, this.options);
             }
-            // Place initialization logic here
-            // You already have access to the DOM element and
-            // the options via the instance, e.g. this.element
-            // and this.options
-            // you can add more functions like the one below and
-            // call them like so: this.yourOtherFunction(this.element, this.options).
         },
 
         generatePatterns: function (el, options) {
@@ -47,8 +42,11 @@
         parseDocument: function (el, options) {
             var $this = this,
                 $el = $(el);
-            $.each($this._patterns, function (index, patterns) {
-                $el.html($el.html().replace(patterns[0], patterns[1]));
+            $($this._defaults.elements.join(), $el).each(function(i){
+                var node = $(this);
+                $.each($this._patterns, function (index, patterns) {
+                    node.text(node.text().replace(patterns[0], patterns[1]));
+                });
             });
             $el.trigger('dialekt-fertig');
         }
