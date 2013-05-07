@@ -45,7 +45,7 @@
             $($this._defaults.elements.join(), $el).each(function(i){
                 var node = $(this);
                 $.each($this._patterns, function (index, patterns) {
-                    node.text(node.text().replace(patterns[0], patterns[1]));
+                    node.html(node.html().replace(patterns[0], patterns[1]));
                 });
             });
             $el.trigger('dialekt-fertig');
