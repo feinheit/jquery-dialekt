@@ -1,3 +1,3 @@
 window.woerterbuch = {
-    'ß': 'ss'
+    'Januar': 'Jänner'
 };

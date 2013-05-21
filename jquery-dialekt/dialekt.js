@@ -23,6 +23,9 @@
     Plugin.prototype = {
 
         init: function () {
+            if (typeof this.defaults.dictionary === 'undefined') {
+                return;
+            }
             if (this._patterns.length === 0) {
                 this.generatePatterns(this.element, this.options);
             } else {

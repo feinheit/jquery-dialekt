@@ -1,3 +1,0 @@
-window.woerterbuch = {
-    'ß': 'ss'
-};
