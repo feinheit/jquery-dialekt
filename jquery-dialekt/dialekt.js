@@ -23,7 +23,7 @@
     Plugin.prototype = {
 
         init: function () {
-            if (typeof this.defaults.dictionary === 'undefined') {
+            if (typeof this._defaults.dictionary === 'undefined') {
                 return;
             }
             if (this._patterns.length === 0) {
