@@ -1,7 +1,7 @@
 jquery-dialekt
 ==============
 
-Weil nicht alles Hochdeutsch sein muss
+Weil das Fahrrad ein Velo und die Strassenbahn ein Tram ist.
 
 
 Dieses Script erlaubt es, Clientseitig einzelne Buchstaben und Wörter zu ersetzen.
